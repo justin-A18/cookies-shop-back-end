@@ -1,73 +1,75 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" />
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# Cookies Shop Backend
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Este es el backend para una tienda de galletas, desarrollado con NestJS y PostgreSQL. El sistema incluye funcionalidades para manejar productos, carritos de compras y autenticación de usuarios.
 
-## Description
+## Tecnologías
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **NestJS**: Framework para Node.js utilizado para construir el backend.
+- **PostgreSQL**: Sistema de gestión de bases de datos relacional.
+- **TypeORM**: ORM para TypeScript y JavaScript.
+- **Bcrypt**: Para el hash de contraseñas.
+- **JWT**: Para la autenticación de usuarios.
+- **Nodemailer**: Para el envio de correos.
+
+## Uso
+
+- **Autenticación**:
+  - `POST /auth/register`
+  - `POST /auth/login`
+  - `POST /auth/validate-email/:token`
+  - `POST /auth/change-password/:token`
+  - `POST /auth/reset-password`
 
 ## Installation
 
-```bash
-$ yarn install
-```
+# Cookies Shop Backend
 
-## Running the app
+Este es el backend para una tienda de galletas, desarrollado con NestJS y PostgreSQL. El sistema incluye funcionalidades para manejar productos, carritos de compras y autenticación de usuarios.
 
-```bash
-# development
-$ yarn run start
+## Tecnologías
 
-# watch mode
-$ yarn run start:dev
+- **NestJS**: Framework para Node.js utilizado para construir el backend.
+- **PostgreSQL**: Sistema de gestión de bases de datos relacional.
+- **TypeORM**: ORM para TypeScript y JavaScript.
+- **Bcrypt**: Para el hash de contraseñas.
+- **JWT**: Para la autenticación de usuarios.
 
-# production mode
-$ yarn run start:prod
-```
+## Instalación
 
-## Test
+1. Clona el repositorio:
 
-```bash
-# unit tests
-$ yarn run test
+   ```bash
+   git clone https://github.com/justin-A18/cookies-shop-back-end.git
+   ```
 
-# e2e tests
-$ yarn run test:e2e
+2. Navega al directorio del proyecto:
 
-# test coverage
-$ yarn run test:cov
-```
+   ```bash
+   cd cookies-shop-back-end
+   ```
 
-## Support
+3. Instala las dependencias:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+   ```bash
+   npm install
+   ```
 
-## Stay in touch
+4. Configura la base de datos. Crea un archivo `.env` en el directorio raíz del proyecto y agrega la configuración de tu base de datos PostgreSQL. Un ejemplo de configuración puede ser:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+   ```env
+   DATABASE_HOST=localhost
+   DATABASE_PORT=5432
+   DATABASE_USERNAME=tu_usuario
+   DATABASE_PASSWORD=tu_contraseña
+   DATABASE_NAME=tu_base_de_datos
+   ```
 
-## License
+5. Inicia el servidor:
 
-Nest is [MIT licensed](LICENSE).
+   ```bash
+   npm run start
+   ```
