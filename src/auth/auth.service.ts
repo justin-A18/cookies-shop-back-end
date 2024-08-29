@@ -70,10 +70,9 @@ export class AuthService {
 
     await this.sendWelcomeEmail(user, token);
 
-    const { password, ...resUser } = user;
-
     return {
-      message: 'Usuario registrado correctamente',
+      message:
+        '¡Te has registrado con éxito!. Te hemos enviado un correo de confirmación.',
     };
   }
 
@@ -98,7 +97,10 @@ export class AuthService {
     const token = await this.generateUserToken(user);
     await this.sendPasswordResetEmail(user, token);
 
-    return { message: 'Se ha enviado un enlace para cambiar tu contraseña' };
+    return {
+      message:
+        '¡Tu solicitud de cambio de contraseña ha sido enviada con éxito!',
+    };
   }
 
   private async generateUserToken(user: User) {
@@ -113,7 +115,7 @@ export class AuthService {
       html: `
         <h1>Bienvenido ${user.username} a nuestra tienda de galletas</h1>
         <p>Para confirmar tu cuenta haz click en el siguiente enlace</p>
-        <a href="${process.env.APP_URL}/auth/confirm/${token}">Confirmar cuenta</a>
+        <a href="${process.env.APP_URL}/auth/register/${token}">Confirmar cuenta</a>
       `,
     });
   }
@@ -126,7 +128,7 @@ export class AuthService {
       html: `
         <h1>Cambio de contraseña</h1>
         <p>Para cambiar tu contraseña haz click en el siguiente enlace</p>
-        <a href="${process.env.APP_URL}/auth/reset/${token}">Cambiar contraseña</a>
+        <a href="${process.env.APP_URL}/auth/change-password/${token}">Cambiar contraseña</a>
       `,
     });
   }
@@ -150,6 +152,9 @@ export class AuthService {
     user.isValidEmail = true;
     await this.userRepository.update(user.id, user);
 
-    return { message: 'Cuenta confirmada' };
+    return {
+      message:
+        '¡Gracias por unirte a nuestra familia de amantes de las galletas!',
+    };
   }
 }
