@@ -1,19 +1,19 @@
+import { MailerModule } from '@nestjs-modules/mailer';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { Module } from '@nestjs/common';
 
-import { MailerModule } from '@nestjs-modules/mailer';
-import { CommonModule } from './common/common.module';
-import { UsersModule } from './users/users.module';
-import { AuthModule } from './auth/auth.module';
-
 import { validationHelper } from './config/helpers';
 
+import { Product } from './products/entities/product.entity';
+import { Cart } from './cart/entities/cart.entity';
 import { User } from './users/entities';
-import { ProductosModule } from './productos/productos.module';
-import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
-import { OrderModule } from './order/order.module';
-import { ItemCartModule } from './item-cart/item-cart.module';
+
+import { ProductsModule } from './products/products.module';
+import { CommonModule } from './common/common.module';
+import { UsersModule } from './users/users.module';
+import { CartModule } from './cart/cart.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -28,7 +28,7 @@ import { ItemCartModule } from './item-cart/item-cart.module';
       username: process.env.DB_USER,
       password: process.env.DB_PASS,
       database: process.env.DB_NAME,
-      entities: [User],
+      entities: [User, Product, Cart],
       synchronize: true,
     }),
     MailerModule.forRoot({
@@ -37,10 +37,8 @@ import { ItemCartModule } from './item-cart/item-cart.module';
     AuthModule,
     UsersModule,
     CommonModule,
-    ProductosModule,
-    ShoppingCartModule,
-    OrderModule,
-    ItemCartModule,
+    CartModule,
+    ProductsModule,
   ],
   controllers: [],
   providers: [],

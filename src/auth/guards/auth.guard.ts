@@ -14,6 +14,10 @@ import { Decoded } from '../interfaces/token.interface';
 import { JwtAdapter } from 'src/config/adapters';
 import { User } from 'src/users/entities';
 
+interface CustomRequest extends Request {
+  user: User;
+}
+
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(
@@ -23,7 +27,7 @@ export class AuthGuard implements CanActivate {
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    const req = context.switchToHttp().getRequest<Request>();
+    const req = context.switchToHttp().getRequest<CustomRequest>();
     const authorization = req.headers.authorization;
 
     if (!authorization) {
@@ -45,7 +49,7 @@ export class AuthGuard implements CanActivate {
 
       if (!user) throw new UnauthorizedException('Invalid token - user');
 
-      req.body.user = user;
+      req.user = user;
 
       return true;
     } catch (error) {

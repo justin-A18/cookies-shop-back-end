@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Cart } from 'src/cart/entities/cart.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum Roles {
   USER_ROLE = 'USER_ROLE',
@@ -27,4 +28,7 @@ export class User {
 
   @Column('bool', { default: false })
   isValidEmail: boolean;
+
+  @OneToMany(() => Cart, (cart) => cart.user, { eager: true })
+  cart: Cart[];
 }
