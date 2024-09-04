@@ -19,7 +19,7 @@ export class CreateProductDto {
   @IsArray()
   @IsString({ each: true })
   @IsNotEmpty()
-  images: string[];
+  images: Array<Express.Multer.File>;
 
   @IsBoolean()
   @IsNotEmpty()
