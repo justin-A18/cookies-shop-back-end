@@ -29,6 +29,6 @@ export class User {
   @Column('bool', { default: false })
   isValidEmail: boolean;
 
-  @OneToMany(() => Cart, (cart) => cart.user, { eager: true })
+  @OneToMany(() => Cart, (cart) => cart.user)
   cart: Cart[];
 }
